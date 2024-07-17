@@ -1,0 +1,61 @@
+<!-- News Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <h1 class="display-5 mb-5 text-primary text-center">News & Updates</h1>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-4 wow fadeInUp" *ngFor="let newsItem of news; let i = index"
+                [attr.data-wow-delay]="i * 0.1 + 's'">
+                <div class="news-item">
+                    <div class="overflow-hidden">
+                        <img class="img-fluid" [src]="getImageUrl(newsItem.newsImage?.picByte)" [alt]="newsItem.title">
+                    </div>
+                    <div class="p-4 text-center border border-5 border-light border-top-0">
+                        <h4 class="mb-3">{{ newsItem.title }}</h4>
+                        <!-- <p>{{ newsItem.description }}</p> -->
+                        <a class="btn mr-2" (click)="openModel(newsItem)">
+                            <!-- <i class="fas fa-link"></i> Read More -->
+
+                        </a>
+
+                        <details>
+                            <summary>Read More</summary>
+                            <p>
+                                {{newsItem.description}}
+                            </p>
+                        </details>
+                        <a><i class="fab fa-calender"></i> {{newsItem.newsDate}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- News End -->
+
+
+<div class="modal custom-modal" id="news">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                {{selectedNews?.title}}
+                <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="closeModel()"></button> -->
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body custom-modal-body">
+                <img [src]="getImageUrl(selectedNews?.newsImage?.picByte)" alt="Image" class="img-fluid">
+                <p>{{selectedNews?.description}}</p>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                    (click)="closeModel()">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>

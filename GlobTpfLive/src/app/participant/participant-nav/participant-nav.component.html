@@ -1,0 +1,28 @@
+<div class="container-fluid">
+    <div class="row">
+        <nav class="col-3 sidebar bg-dark text-white fixed">
+            <div class="profile-section text-center my-3">
+                <img [src]="partImage ? partImage : 'default_profile_image_url.jpg'" alt="Admin Image"
+                    class="rounded-circle" width="80" height="80">
+                <h5 class="mt-2 text-white">{{ partName }}</h5>
+            </div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link text-white user-select-none">
+                        <i class="fas fa-tachometer-alt"></i> Participant Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" routerLink="/participant/participantdetails">
+                        <i class="fas fa-user-alt"></i> Basic Details
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" routerLink="/" (click)="deleteStorage()" data-content="logout">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>

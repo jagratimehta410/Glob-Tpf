@@ -1,0 +1,17 @@
+<div class="container-fluid page-header py-5 mb-5 header-background dynamic-background"
+    [style.background-image]="img ? 'linear-gradient(rgba(53, 53, 53, .7), rgba(53, 53, 53, .7)), url(' + img + ')' : 'linear-gradient(rgba(53, 53, 53, .7), rgba(53, 53, 53, .7)), url(' + safeImageUrl + ')'">
+    <img [src]="img" alt="no image found" srcset="">
+    <div class="container py-5">
+        <h1 class="display-3 text-light mb-3 animated slideInDown">{{ prgtitle }}</h1>
+        <nav aria-label="breaadcrumb animated slideInDown">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item text-light active" aria-current="page">Introduction</li>
+                <li class="breadcrumb-item text-light active" aria-current="page">Program Benefits</li>
+                <li class="breadcrumb-item text-light active" aria-current="page">Our Approach</li>
+                <li class="breadcrumb-item text-light active" aria-current="page">How it Works</li>
+                <li class="breadcrumb-item text-light active" aria-current="page">{{img}}</li>
+                <li class="breadcrumb-item text-light active" aria-current="page">{{safeImageUrl}}</li>
+            </ol>
+        </nav>
+    </div>
+</div>

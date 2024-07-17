@@ -1,0 +1,54 @@
+<div class="container-fluid bg-light overflow-hidden my-5 px-lg-0">
+    <div class="container about px-lg-0">
+        <div *ngFor="let project of projects; let i = index" class="row g-0 mx-lg-0">
+
+            <!-- For odd indices -->
+            <ng-container *ngIf="getAdjustedIndex(i+1) % 2 !== 0; else evenTemplate">
+                <div class="row g-0 mx-lg-0">
+                    <div class="col-lg-6 feature-text py-5 wow fadeIn" data-wow-delay="0.5s">
+                        <div class="p-lg-5 ps-lg-0">
+                            <h1 class="display-5 text-primary mb-4">{{ getAdjustedIndex(i) + 1 }}) {{ project.title }}
+                            </h1>
+                            <p class="mb-4 pb-2">{{ project.description }}</p>
+                            <button (click)="getDetails(project.title,project.projectImage?.at(0)?.picByte)"
+                                class="btn btn-primary py-sm-3 px-sm-5 me-3 animated slideInLeft">Explore</button>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 pe-lg-0" style="min-height: 200px; margin-top: 5%;">
+                        <div class="position-relative h-100">
+                            <img class="position-absolute img-fluid"
+                                [src]="getImageUrl(project.projectImage?.at(0)?.picByte)" alt=""
+                                style="object-fit: cover;">
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+
+            <!-- For even indices -->
+            <ng-template #evenTemplate>
+                <div class="row g-0 mx-lg-0">
+                    <div class="col-lg-6 ps-lg-0" style="min-height: 200px; margin-top: 40px;">
+                        <div class="container">
+                            <div class="row justify-content-center align-items-center">
+                                <div class="col-md-6">
+                                    <img class="img-fluid" [src]="getImageUrl(project.projectImage?.at(0)?.picByte)"
+                                        alt="GlobTech Logo" style="max-width: 130%; margin-top: 2px; height: auto;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 about-text py-5 wow fadeIn" data-wow-delay="0.5s">
+                        <div class="p-lg-6 pe-lg-0">
+                            <h1 class="display-5 text-primary mb-4">{{ getAdjustedIndex(i) + 1 }}) {{ project.title }}
+                            </h1>
+                            <p class="mb-4 pb-2">{{ project.description }}</p>
+                            <button (click)="getDetails(project.title,project.projectImage?.at(0)?.picByte)"
+                                class="btn btn-primary py-sm-3 px-sm-5 me-3 animated slideInLeft">Explore</button>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+
+        </div>
+    </div>
+</div>

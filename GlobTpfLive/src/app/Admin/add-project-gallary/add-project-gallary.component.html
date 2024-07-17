@@ -1,0 +1,17 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit($event)" method="post" enctype="multipart/form-data">
+    <div>
+        <label for="projectTitle">Project Title:</label>
+        <select formControlName="projectTitle" (change)="onProjectChange()" required>
+            <option *ngFor="let project of projects" [value]="project.title">
+                {{ project.title }}
+            </option>
+        </select>
+
+    </div>
+
+    <div>
+        <label for="images">Upload Images (Max 4):</label>
+        <input type="file" id="images" multiple (change)="onImageChange($event)" accept="image/*" required>
+    </div>
+    <button type="submit">Submit</button>
+</form>

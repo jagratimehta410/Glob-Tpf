@@ -1,0 +1,66 @@
+<form #formGroup="ngForm" (ngSubmit)="onSubmit(formGroup)">
+    <!-- Existing fields -->
+    <div class="mb-3">
+        <label for="title" class="form-label">Project Title</label>
+        <input type="text" name="title" id="title" class="form-control" [(ngModel)]="project.title" required />
+    </div>
+    <div class="mb-3">
+        <label for="description" class="form-label">Project Description</label>
+        <textarea name="description" id="description" class="form-control" rows="5" [(ngModel)]="project.description"
+            required></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="image" class="form-label">Project Image</label>
+        <input type="file" name="image" id="image" class="form-control" accept="image/*"
+            (change)="onImageSelected($event)" multiple required />
+        <div *ngIf="imagePreviews.length > 0" class="mt-3">
+            <div *ngFor="let imagePreview of imagePreviews" class="mb-2">
+                <img [src]="imagePreview" alt="Image Preview" class="img-thumbnail" style="max-width: 200px;" />
+            </div>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="startingDate" class="form-label">Starting Date</label>
+        <input type="date" name="startingDate" id="startingDate" class="form-control"
+            [(ngModel)]="project.projectDetails.startingDate" required />
+    </div>
+    <div class="mb-3">
+        <label for="endingDate" class="form-label">Ending Date</label>
+        <input type="date" name="endingDate" id="endingDate" class="form-control"
+            [(ngModel)]="project.projectDetails.endingDate" required />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Benefits</label>
+        <div *ngFor="let benefit of project.projectDetails.benifit; let i = index; trackBy: trackByIndex"
+            class="d-flex align-items-center mb-2">
+            <input type="text" name="benefit{{i}}" class="form-control" [(ngModel)]="project.projectDetails.benifit[i]"
+                required />
+            <button type="button" class="btn btn-danger ms-2" (click)="removeBenefit(i)">Remove</button>
+        </div>
+        <button type="button" class="btn btn-secondary" (click)="addBenefit()">Add Benefit</button>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Work</label>
+        <div *ngFor="let work of project.work; let i = index; trackBy: trackByIndex" class="mb-2">
+            <div class="d-flex align-items-center mb-2">
+                <input type="text" name="workTitle{{i}}" class="form-control me-2" placeholder="Work Title"
+                    [(ngModel)]="project.work[i].title" required />
+                <textarea name="workDescription{{i}}" class="form-control" rows="2" placeholder="Work Description"
+                    [(ngModel)]="project.work[i].description" required></textarea>
+                <button type="button" class="btn btn-danger ms-2" (click)="removeWork(i)">Remove</button>
+            </div>
+        </div>
+        <button type="button" class="btn btn-secondary" (click)="addWork()">Add Work</button>
+    </div>
+    <div class="mb-3">
+        <div class="form-group d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary" [disabled]="loading">
+                <span *ngIf="loading" class="spinner"></span>
+                <span *ngIf="!loading">Submit</span>
+            </button>
+        </div>
+    </div>
+</form>
+
+
+

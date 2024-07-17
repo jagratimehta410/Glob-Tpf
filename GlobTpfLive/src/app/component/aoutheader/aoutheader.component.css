@@ -1,0 +1,5 @@
+.page-header {
+    background: linear-gradient(rgba(53, 53, 53, .7), rgba(53, 53, 53, .7)), url(../../../assets/img/about/carousel-1.jpg) center center no-repeat;
+    background-size: cover;
+
+}

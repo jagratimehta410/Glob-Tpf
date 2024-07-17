@@ -1,0 +1,23 @@
+<div class="container-xxl py-5 registration-box text-center">
+    <h1 class="display-3 animated slideInDown">Registration</h1>
+    <form #myForm="ngForm" method="post" (ngSubmit)="onSubmit()">
+        <label for="username">Full name</label>
+        <input type="text" id="full name" name="full name" [(ngModel)]="particpiant.name" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" [(ngModel)]="particpiant.email" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" [(ngModel)]="particpiant.password" required>
+        <label for="contact">Contact:</label>
+        <input type="text" id="contact" name="contact" [(ngModel)]="particpiant.contact" required>
+        <label for="role">Role:</label>
+        <select id="role" name="role" [(ngModel)]="particpiant.roles[0]" required>
+            <option value="ROLE_ADMIN">Admin</option>
+            <option value="ROLE_TEACHER">Teacher</option>
+            <option value="ROLE_PARTICIPANT">Participant</option>
+        </select>
+        <br>
+        <br>
+        <button type="submit" [disabled]="loading">Register</button>
+    </form>
+    <div *ngIf="loading" class="spinner"></div>
+</div>

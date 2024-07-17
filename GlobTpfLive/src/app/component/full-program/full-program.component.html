@@ -1,0 +1,77 @@
+<div class="container-fluid page-header py-5 mb-5 header-background dynamic-background"
+    [style.background-image]="getImageUrl( project.projectImage?.at(0)?.picByte) ? 'linear-gradient(rgba(53, 53, 53, .7), rgba(53, 53, 53, .7)), url(' + getImageUrl( project.projectImage?.at(0)?.picByte) + ')' : 'linear-gradient(rgba(53, 53, 53, .7), rgba(53, 53, 53, .7)), url(' + getImageUrl( project.projectImage?.at(0)?.picByte) + ')'">
+    <div class="container py-5">
+        <h1 class="display-3 text-light mb-3 animated slideInDown">{{ project.title }}</h1>
+        <nav aria-label="breaadcrumb animated slideInDown">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item text-light active" aria-current="page">Introduction</li>
+                <li class="breadcrumb-item text-light active" aria-current="page">Program Benefits</li>
+                <li class="breadcrumb-item text-light active" aria-current="page">Our Approach</li>
+                <li class="breadcrumb-item text-light active" aria-current="page">How it Works</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<div class="container-fluid bg-light overflow-hidden my-5 px-lg-0">
+    <div class="container about px-lg-0">
+        <div class="row g-0 mx-lg-0 justify-content-center">
+            <div class="col-lg-10 about-text py-5 wow fadeIn" data-wow-delay="0.5s">
+                <div class="p-lg-6 pe-lg-0 text-center">
+                    <h1 class="display-5 text-primary mb-4">INTRODUCTION</h1>
+                    <p class="mb-4 pb-2">{{ project.description }}</p>
+                    <img class="img-fluid rounded w-60 wow zoomIn" data-wow-delay="0.1s"
+                        [src]="getImageUrl( project.projectImage?.at(0)?.picByte)">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Content Section 1 -->
+<!-- Content Section 1 -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-6">
+                <div class="row g-3">
+                    <div *ngFor="let image of project.projectImage" class="col-6 text-start">
+                        <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.1s"
+                            [src]="'data:image/jpeg;base64,' + image.picByte">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <h1 class="mb-4 text-primary">BENEFITS</h1>
+                <ul>
+                    <li *ngFor="let benefit of project.projectDetails.benifit">
+                        <h5>{{ benefit }}</h5>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container mt-5 mb-5">
+    <div class="timeline-container">
+        <div *ngFor="let work of project.work; let i = index"
+            [ngClass]="{'timeline-item left': i+1 % 2 === 0, 'timeline-item right': i+1 % 2 !== 0}">
+            <div class="timeline-body">
+                <div class="timeline-meta">
+                    <div class="d-inline-flex">
+                        <span class="text-dark">{{ work.title }}</span>
+                    </div>
+                </div>
+                <div class="timeline-content">
+                    <div class="card">
+                        <div class="card-body p-xl-2">
+                            <p class="card-text">{{ work.description }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+

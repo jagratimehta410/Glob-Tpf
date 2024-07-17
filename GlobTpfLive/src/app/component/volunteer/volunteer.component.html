@@ -1,0 +1,27 @@
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="section-title text-center">
+            <h1 class="display-5 mb-5">Volunteer's</h1>
+        </div>
+        <div class="d-flex justify-content-between align-items-center position-relative">
+            <button class="nav-button prev-button" (click)="prev()">
+                <span>&#9664;</span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <div class="testimonial-item text-center shadow-lg rounded shadow-custom flex-grow-1 mx-4"
+                *ngFor="let testimonial of testimonials; let i = index" [ngClass]="{'active': i === currentIndex}">
+                <img class="img-fluid bg-light p-2 mx-auto mb-3" [src]="testimonial.image"
+                    style="width: 90px; height: 90px;">
+                <div class="testimonial-text text-center p-4">
+                    <p>{{ testimonial.text }}</p>
+                    <h5 class="mb-1">{{ testimonial.name }}</h5>
+                    <span class="fst-italic">{{ testimonial.profession }}</span>
+                </div>
+            </div>
+            <button class="nav-button next-button" (click)="next()">
+                <span>&#9654;</span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,88 @@
+<div class="container-fluid">
+    <div class="row">
+        <nav class="col-3 sidebar bg-dark text-white fixed">
+            <div class="profile-section text-center my-3">
+                <img [src]="adminImage ? adminImage : 'default_profile_image_url.jpg'" alt="Admin Image"
+                    class="rounded-circle" width="80" height="80">
+                <h5 class="mt-2 text-white">{{ adminName }}</h5>
+            </div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link text-white user-select-none">
+                        <i class="fas fa-tachometer-alt"></i> Admin Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" routerLink="/admin/gallary" data-content="profile">
+                        <i class="fas fa-images"></i> Gallery
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" [hidden]="!isSuperAdmin" routerLink="/admin/adminusers"
+                        data-content="settings">
+                        <i class="fas fa-user-check"></i> Approve User
+                        <label class="badge bg-primary">
+                            <span class="align-middle">{{counter}}</span>
+                        </label>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" routerLink="/admin/addprojects">
+                        <i class="fas fa-plus-circle"></i> Add Project
+                    </a>
+                </li>
+
+                <!-- <li class="nav-item">
+                    <a class="nav-link text-white" routerLink="/admin/addprojectgallary">
+                        <i class="fas fa-plus-circle"></i> Add Project Gallary
+                    </a>
+                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link text-white" routerLink="/admin/displayproject">
+                        <i class="fas fa-eye"></i> View Project
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" routerLink="/admin/uploadnews">
+                        <i class="fas fa-upload"></i> Upload News
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" routerLink="/admin/manage-news">
+                        <i class="fas fa-newspaper"></i> Manage News
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" routerLink="/admin/uploadVideo">
+                        <i class="fas fa-video"></i> Upload Videos
+                    </a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link text-white" routerLink="/admin/shownews">
+                        <i class="fas fa-newspaper"></i> View News
+                    </a>
+                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link text-white" routerLink="/admin/showvideo">
+                        <i class="fas fa-film"></i> View Videos
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" routerLink="/admin" (click)="downloadPdf()">
+                        <i class="fas fa-file-download"></i> Download Report
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" routerLink="/admin/adminallparticipant" data-content="settings">
+                        <i class="fas fa-users"></i> Participants
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" routerLink="/" (click)="deleteStorage()" data-content="logout">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>

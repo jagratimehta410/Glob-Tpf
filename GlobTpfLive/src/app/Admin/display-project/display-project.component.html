@@ -1,0 +1,87 @@
+<div *ngIf="isLoading" class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
+<div *ngIf="!isLoading">
+    <div class="row">
+        <div class="col-md-4" *ngFor="let proj of paginatedProjects">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <textarea cols="30" rows="2" class="form-control" [(ngModel)]="proj.title"
+                            [readonly]="!isEditable" [ngClass]="{'form-control-plaintext': !isEditable}"></textarea>
+                    </h5>
+                    <p class="card-text">
+                        <textarea cols="30" rows="5" class="form-control" [(ngModel)]="proj.description"
+                            [readonly]="!isEditable" [ngClass]="{'form-control-plaintext': !isEditable}"></textarea>
+                    </p>
+                    <div class="mb-3">
+                        <img *ngIf="proj.projectImage" [src]="getImageUrl(proj.projectImage.at(0)?.picByte)"
+                            alt="Project Image" class="img-thumbnail"
+                            style="max-width: 150px; height: auto; cursor: pointer;"
+                            (click)="openModel(proj.projectImage.at(0)?.picByte)">
+                    </div>
+                    <div class="mb-3">
+                        <label>Starting Date</label>
+                        <input type="date" class="form-control" [(ngModel)]="proj.projectDetails.startingDate"
+                            [readonly]="!isEditable" [ngClass]="{'form-control-plaintext': !isEditable}">
+                    </div>
+                    <div class="mb-3">
+                        <label>Ending Date</label>
+                        <input type="date" class="form-control" [(ngModel)]="proj.projectDetails.endingDate"
+                            [readonly]="!isEditable" [ngClass]="{'form-control-plaintext': !isEditable}">
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <button class="btn btn-primary btn-sm" (click)="toggleEdit(proj)">
+                            {{isEditable ? 'Save' : 'Update'}}
+                        </button>
+                        <button class="btn btn-danger btn-sm" (click)="deleteProject(proj)">Delete</button>
+                        <button *ngIf="isEditable" class="btn btn-secondary btn-sm"
+                            (click)="openImageUpload(proj)">Update Images</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <mat-paginator [length]="project.length" [pageSize]="pageSize" (page)="onPaginateChange($event)">
+    </mat-paginator>
+</div>
+
+<!-- Modal for displaying images -->
+<div class="modal custom-modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="closeModel()"></button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <img [src]="modalImageUrl" alt="Image" class="img-fluid">
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Image Upload Modal -->
+<div class="modal fade" id="imageUploadModal" tabindex="-1" role="dialog" aria-labelledby="imageUploadModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="imageUploadModalLabel">Update Project Images</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="file" (change)="onImageSelected($event)" multiple>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="updateProjectImages()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>

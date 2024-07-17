@@ -1,0 +1,33 @@
+<div class="container mt-5">
+    <h2 class="mb-4">Participant Details Form</h2>
+    <form method="post" enctype="multipart/form-data" (ngSubmit)="updateDetails()">
+        <div class="form-group">
+            <label for="email"><i class="fa fa-envelope"></i> Email</label>
+            <input type="email" class="form-control user-select-none" id="email" placeholder="Enter email" required
+                [(ngModel)]="participant.email" name="email" readonly>
+        </div>
+        <div class="form-group">
+            <label for="name"><i class="fa fa-user"></i> Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter name" required
+                [(ngModel)]="participant.name" name="name" readonly>
+        </div>
+        <div class="form-group">
+            <label for="contact"><i class="fa fa-phone"></i> Contact</label>
+            <input type="text" class="form-control" id="contact" placeholder="Enter contact" required
+                [(ngModel)]="participant.contact" name="contact" readonly>
+        </div>
+        <div class="form-group">
+            <label for="roles"><i class="fa fa-users"></i> Roles</label>
+            <input type="text" class="form-control user-select-none" id="roles" placeholder="Enter roles" required
+                [(ngModel)]="participant.roles" name="roles" readonly>
+        </div>
+        <div class="form-group">
+            <label for="profileImage"><i class="fa fa-image"></i> Profile Image</label>
+            <input type="file" class="form-control-file" id="profileImage" (change)="onFileSelected($event)">
+        </div>
+        <div *ngIf="file" class="form-group">
+            <img [src]="getImageUrl(fileBytes)" alt="Profile Image" class="img-thumbnail" width="150">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

@@ -1,0 +1,55 @@
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-md-4 mb-4" *ngFor="let item of news; let i = index">
+                    <div class="card" style="width: 18rem;">
+                        <img [src]="getImageUrl(item.newsImage?.picByte)" class="card-img-top" height="100px"
+                            width="100px" alt="..." style="max-width: auto; height: 200px; cursor: pointer;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{item.title}}</h5>
+                            <p class="card-text">{{ trimDescription(item.description) }}</p>
+                            <!-- <a class="btn mr-2" (click)="openModel(item)">
+                                <i class="fas fa-link"></i> Read More
+                            </a> -->
+                            <!-- <a><i class="fab fa-calendar"></i> {{item.newsDate}}</a> -->
+                            <button class="btn btn-primary mx-3" (click)="openEditModal(item)">Edit</button>
+                            <button class="btn btn-primary" (click)="deleteNews(item)">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Edit News Modal -->
+<div class="modal custom-modal" [ngStyle]="{'display': editingNews ? 'block' : 'none'}">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit News</h5>
+                <button type="button" class="btn-close" (click)="closeEditModal()"></button>
+            </div>
+            <div class="modal-body">
+                <form (ngSubmit)="saveEditedNews()" #editForm="ngForm" *ngIf="editingNews">
+                    <div class="mb-3">
+                        <label for="editTitle" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="editTitle" name="editTitle"
+                            [(ngModel)]="editingNews.title" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editDescription" class="form-label">Description</label>
+                        <textarea class="form-control" id="editDescription" name="editDescription"
+                            [(ngModel)]="editingNews.description" required></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" (click)="closeEditModal()">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="isLoading" class="loader"></div>

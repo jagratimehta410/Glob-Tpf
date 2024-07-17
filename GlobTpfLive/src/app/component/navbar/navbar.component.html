@@ -1,0 +1,119 @@
+<!-- Navbar Start -->
+<nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
+    <a routerLink="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+        <img src="assets/img/globtechLogo.png" alt="img" style="height: 70px; margin-left: 50px;  margin-right: 0px;">
+    </a>
+    <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto p-4 p-lg-0">
+            <a routerLink="/" class="nav-item nav-link active">Home</a>
+            <div class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">About</a>
+                <div class="dropdown-menu fade-up m-0">
+                    <a routerLink="/aboutmain" class="dropdown-item">Full About Page</a>
+                    <ol>
+                        <li><a routerLink="/whoweare" class="dropdown-item">Who We Are</a></li>
+                        <li><a routerLink="/vission" class="dropdown-item">Our Vision</a></li>
+                        <li><a routerLink="/mission" class="dropdown-item">Our Mission</a></li>
+                        <li><a routerLink="/value" class="dropdown-item">Our Values</a></li>
+                        <li><a routerLink="/approach" class="dropdown-item">Our Approach</a></li>
+                        <li><a routerLink="/teammain" class="dropdown-item">Our Team Members</a></li>
+                        <ul>
+                            <li><a routerLink="/team" class="dropdown-item">Governing Board</a></li>
+                            <li><a routerLink="/advisory" class="dropdown-item">Adivsory Board</a></li>
+                        </ul>
+                    </ol>
+                </div>
+            </div>
+            <div class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Our Programs</a>
+                <div class="dropdown-menu fade-up m-0">
+                    <a routerLink="/program" class="dropdown-item">List Of Program</a>
+                    <ol>
+                        <li> <a routerLink="/codingonwheel" class="dropdown-item">Coding On Wheels</a></li>
+                        <li><a routerLink="/codingeducation" class="dropdown-item">Coding Education In Government
+                                School</a>
+                        </li>
+                        <li><a routerLink="/womenempowerment" class="dropdown-item">Women Empowerment</a></li>
+                        <!-- <li><a routerLink="testimonial.html" class="dropdown-item">Livelihoods</a></li> -->
+                    </ol>
+                </div>
+            </div>
+            <div class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Campaign</a>
+                <div class="dropdown-menu fade-up m-0">
+                    <a routerLink="/campaign" class="dropdown-item">List of Campaign</a>
+                    <ol>
+                        <li> <a routerLink="/campaign1" class="dropdown-item"> Padho Bhi Padhaon Bhi</a></li>
+                        <li> <a routerLink="/campaign2" class="dropdown-item">Corporate Training for Social Causes</a>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <div class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Resources</a>
+                <div class="dropdown-menu fade-up m-0">
+                    <a routerLink="/mainresources" class="dropdown-item">Resources List</a>
+                    <ol>
+                        <!-- <li><a routerLink="/media" class="dropdown-item">Media</a></li> -->
+                        <li><a routerLink="/gallary" class="dropdown-item">Gallary</a></li>
+                        <li><a routerLink="/anual" class="dropdown-item">Annual Report</a></li>
+                        <!-- <li><a routerLink="testimonial.html" class="dropdown-item">Publication</a></li> -->
+                    </ol>
+                </div>
+            </div>
+
+            <a routerLink="/contact" class="nav-item nav-link">Contact</a>
+            <a routerLink="/" class="nav-item nav-link" [hidden]="disable" (click)="openModel()">Notification<span
+                    class="badge bg-primary m-1">1</span></a>
+            <div class="nav-item dropdown">
+                <a routerLink="" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">ENROLL</a>
+                <div class="dropdown-menu fade-up m-0">
+                    <a routerLink="/login" class="dropdown-item">Login</a>
+                    <a routerLink="registration" class="dropdown-item">Sign-up</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- <div *ngIf="!isAccountEnabled()" class="notification-section">
+    <button (click)="showAccountActivationAlert()" class="btn btn-info">Activate Account</button>
+</div> -->
+
+<!-- Navbar End -->
+
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Your Notifications</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="closeModel()"></button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="modal-body">
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="card-text text-center">
+                                Your Account is not Activated Please Wait Untill Admin Aprove it !
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+            </div>
+
+        </div>
+    </div>
+</div>
